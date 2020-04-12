@@ -15,12 +15,11 @@ class IsoCodesServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang/', 'iso_codes');
-
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang/', 'limanweb/iso_codes');
+        
         $this->publishes([
-            __DIR__.'/../resources/lang/' => resource_path('lang/vendor/iso_codes'),
-            __DIR__.'/../config/iso_currency.php' => config_path('iso_currency.php'),
-            // __DIR__.'/../config/iso_country.php' => config_path('iso_country.php'),
+            // __DIR__.'/../resources/lang' => resource_path('lang/vendor/iso_codes'),
+            __DIR__.'/../config' => config_path('vendor/iso_codes'),
         ]);
         
     }

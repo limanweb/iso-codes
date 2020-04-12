@@ -1,5 +1,10 @@
 <?php 
 
+/**
+ * Currency names
+ *
+ * @locale en
+ */
 return [
     "AED" => ["title" => "United Arab Emirates dirham",],
     "AFN" => ["title" => "Afghan afghani",],
