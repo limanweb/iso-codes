@@ -136,17 +136,26 @@ class IsoCodesService
      */
     protected function getConfig(string $section, string $locale) 
     {
+        // Load configuration of section
         $sectionConfig = $this->config['sections'][$section] ?? null;
         if (empty($sectionConfig)) {
             throw new \Exception(trans('limanweb/iso_codes::errors.section_config_not_exists', ['section' => $section]));
         }
 
+        // Load data from config
         $data = [];
         $configData = config("{$sectionConfig['config_path']}");
         foreach ($configData as &$dataItem) {
+
+            // Get translated fields for every item
             $transKey = "{$sectionConfig['trans_path']}.data.{$dataItem[$sectionConfig['trans_key']]}";
-            $trans = trans($transKey, [], $locale);
-            $data[$dataItem[$sectionConfig['trans_key']]] = array_merge($dataItem, $trans);
+            $translatedFields = trans($transKey, [], $locale); 
+            if (!is_array($translatedFields)) {
+                $translatedFields = [];
+            }
+
+            // Merge translated fields
+            $data[$dataItem[$sectionConfig['trans_key']]] = array_merge($dataItem, $translatedFields);
         }
 
         if (is_array($data)) {
