@@ -123,3 +123,14 @@ To get full currency list put `iso_currency` section name into first argument
      ...
    ]
 ```
+
+## Features of the implementation
+
+Service class is singleton and has only one instance in application.
+
+Service use two level cache to store compiled (translated) data. First level (L1) cache is a service class property with one request processing lifetime. And second level (L2) cache is a system cache.
+
+You can disable using of cache with `use_cache` and `use_local_cache` options in `config/limanweb/iso_codes/config.php`.
+Set `use_cache` to false for disable using of system cache (L2).
+Set `use_local_cache` to false for disable using of local cache (L1).
+
