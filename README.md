@@ -2,10 +2,12 @@
 
 This package provides any ISO-code lists to use in your Laravel-application. 
 
-List of sections:
+List of sections and available locales:
 
 * **iso_country** - ISO 3166-1 country codes;
+    * locales: `en`, `fr`, `ru`, `ka`, `hy`
 * **iso_currency** - ISO 4217 currency codes;
+    * locales: `en`, `ru`, `ka`
 
 ## Installation
 
